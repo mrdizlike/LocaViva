@@ -7,19 +7,46 @@
 
 import SwiftUI
 
-//struct Buttons: View {
-//    var body: some View {
-////        NavigationLink(destination: ) {
-////            Text("Дальше")
-////                .font(.headline)
-////                .foregroundStyle(.white)
-////                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100)
-////                .background(Color.blue)
-////                .clipShape(RoundedRectangle(cornerSize: 45))
-////        }
-//    }
-//}
-//
-//#Preview {
-//    Buttons()
-//}
+struct NextButton: View {
+    @State var sceneView: AnyView
+    
+    var body: some View {
+        NavigationLink(destination: sceneView) {
+            Text("Дальше")
+                .font(.headline)
+                .foregroundStyle(.white)
+                .frame(width: 260, height: 65)
+                .background(Color.blue)
+                .cornerRadius(45)
+        }
+    }
+}
+
+struct LoginButton: View {
+    @State var sceneView: AnyView?
+    
+    var body: some View {
+        NavigationLink(destination: sceneView) {
+            Text("Вход")
+                .font(.headline)
+                .frame(width: 260, height: 65)
+                .background(Color(red: 1, green: 0.81, blue: 0.33))
+                .cornerRadius(45)
+        }
+    }
+}
+
+struct RegisterButton: View {
+    @State var sceneView: AnyView?
+    
+    var body: some View {
+        NavigationLink(destination: sceneView) {
+            Text("Регистрация")
+                .font(.headline)
+                .foregroundStyle(.white)
+                .frame(width: 260, height: 65)
+                .background(Color.blue)
+                .cornerRadius(45)
+        }
+    }
+}

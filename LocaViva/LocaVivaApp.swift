@@ -13,7 +13,7 @@ struct LocaVivaApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BeginScreenView()
         }
         .modelContainer(for: Item.self)
     }
