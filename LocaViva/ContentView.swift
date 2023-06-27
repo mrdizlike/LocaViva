@@ -6,55 +6,54 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-    
+
     var body: some View {
         NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
+            Color(red: 0.24, green: 0.64, blue: 0.36)
+                .ignoresSafeArea()
+                .overlay(
+            VStack {
+                ZStack {
+                    Circle()
+                        .foregroundStyle(.clear)
+                        .frame(width: 512, height: 512)
+                        .background(Image("Background")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 512, height: 512)
+                            .clipped())
+                    Circle()
+                        .foregroundStyle(.clear)
+                        .frame(width: 275, height: 250)
+                        .background(Image("Logo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 275, height: 250)
+                            .clipped())
+                        .padding(.top)
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
+                .padding(.top, -380)
+                
+                Text("Привет!")
+                    .foregroundStyle(Color(red: 0.9, green: 0.98, blue: 0.81))
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding()
+                
+                Text("Посмотрите на новые горизонты и откройте для себя свой город с новой перспективы. LocaViva поможет вам находить уникальные места, интересные события и вдохновляющие приключения, которые скрываются прямо у вас под носом")
+                    .foregroundStyle(Color(red: 0.9, green: 0.98, blue: 0.81))
+                    .font(.headline)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                
+                
+            })
         }
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
