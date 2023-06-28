@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BeginScreenView: View {
+    
+    @State private var text: String = ""
 
     var body: some View {
         NavigationView {
@@ -42,7 +44,7 @@ struct BeginScreenView: View {
                     .fontWeight(.bold)
                     .padding()
                 
-                Text("Посмотрите на новые горизонты и откройте для себя свой город с новой перспективы. LocaViva поможет вам находить уникальные места, интересные события и вдохновляющие приключения, которые скрываются прямо у вас под носом")
+                Text(text)
                     .foregroundStyle(Color(red: 0.9, green: 0.98, blue: 0.81))
                     .font(.headline)
                     .minimumScaleFactor(0.5)
@@ -182,6 +184,8 @@ struct LogRegScreenView: View {
         }
         .navigationBarBackButtonHidden(true)
     }
+    
+    
 }
 
 #Preview {
