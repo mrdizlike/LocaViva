@@ -165,7 +165,6 @@ struct RegisterSecondView: View {
                 //Нужно сделать что-нибудь поумнее
                 Button {
                     RegisterButton().createUser(email: email, phone: phoneNumber, password: password, firstName: firstName, lastName: lastName, country: country)
-                    print(country)
                 } label: {
                     Text("Регистрация")
                         .font(.headline)

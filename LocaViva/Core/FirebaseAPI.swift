@@ -51,16 +51,27 @@ class FirebaseAPI {
     }
 }
 
+@MainActor //Часть ассинхроночки, означает, что этот блок кода должен выполнять в основной очереди
 class AuthViewMode: ObservableObject {
-    @Published var userSession: User?
-    @Published var currentUser: User?
+    @Published var userSession: User? //Проверяем в аккаунте пользователь или нет. публишд используем чтобы следить за изменениями
+    @Published var currentUser: UserData?
     
     init() {
+        self.userSession = Auth.auth().currentUser
         
+        Task {
+            await fetchUser()
+        }
     }
     
-    func signIn(withEmail email: String, withPhone: String, password: String) async throws {
-        
+    func signIn(withEmail email: String, password: String) async throws {
+        do {
+            let result = try await Auth.auth().signIn(withEmail: email, password: password)
+            self.userSession = result.user
+            await fetchUser()
+        } catch {
+            print("something failed \(error.localizedDescription)")
+        }
     }
     
     func createUser(withEmail email: String, withPhone: String, password: String, firstName: String, lastName: String, country: String) async throws {
@@ -71,6 +82,7 @@ class AuthViewMode: ObservableObject {
             let user = UserData(id: result.user.uid, email: result.user.email!, phoneNumber: withPhone, firstName: firstName, lastName: lastName, country: country) //Понять как работать с кастомными данными (UPD: понял)
             let encodedUser = try Firestore.Encoder().encode(user)
             try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
+            await fetchUser()
         } catch {
             print("something failed \(error.localizedDescription)")
         }
@@ -78,10 +90,18 @@ class AuthViewMode: ObservableObject {
     }
     
     func signOut() {
-        
+        do {
+            try Auth.auth().signOut()
+            self.userSession = nil
+            self.currentUser = nil
+        } catch {
+            print("failed to sign out: \(error.localizedDescription)")
+        }
     }
     
     func fetchUser() async {
-        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else { return }
+        self.currentUser = try? snapshot.data(as: UserData.self)
     }
 }

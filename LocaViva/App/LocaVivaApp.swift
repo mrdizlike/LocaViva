@@ -20,11 +20,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct YourApp: App {
   // register app delegate for Firebase setup
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+  @StateObject var viewModel = AuthViewMode() //создаем модель данных и сохраняем ее в View
 
   var body: some Scene {
     WindowGroup {
       NavigationView {
-        LogRegScreenView()
+        ContentView()
+              .environmentObject(viewModel)
       }
     }
   }

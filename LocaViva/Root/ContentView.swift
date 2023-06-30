@@ -7,6 +7,20 @@
 
 import SwiftUI
 
+struct ContentView: View {
+    @EnvironmentObject var viewModel: AuthViewMode //инъекция объекта окружения в представление без явного указания
+    
+    var body: some View {
+        Group {
+            if viewModel.userSession != nil {
+                ProfileView()
+            } else {
+                BeginScreenView()
+            }
+        }
+    }
+}
+
 struct BeginScreenView: View {
     
     @State private var text: String = ""

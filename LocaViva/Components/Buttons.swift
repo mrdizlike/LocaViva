@@ -24,6 +24,7 @@ struct NextButton: View {
 
 struct LoginButton: View {
     @State var sceneView: AnyView?
+    @ObservedObject var viewModel = AuthViewMode()
     
     var body: some View {
         NavigationLink(destination: sceneView) {
@@ -33,6 +34,13 @@ struct LoginButton: View {
                 .frame(width: 260, height: 65)
                 .background(Color(red: 1, green: 0.81, blue: 0.33))
                 .cornerRadius(45)
+        }
+    }
+    
+    func loginUser(email: String, password: String) {
+        Task {
+            try await viewModel.signIn(withEmail: email, password: password)
+            
         }
     }
 }

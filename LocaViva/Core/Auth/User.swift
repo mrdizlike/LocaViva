@@ -15,3 +15,4 @@ struct UserData: Identifiable, Codable {
     let lastName: String
     let country: String
 }
+

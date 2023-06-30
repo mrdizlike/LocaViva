@@ -45,6 +45,7 @@
 		0F772E132A4C4B56002E5815 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F772E122A4C4B56002E5815 /* RegisterView.swift */; };
 		0FB846612A4CE87F00E0605B /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0FB846602A4CE87F00E0605B /* PhoneNumberKit */; };
 		0FB846632A4E5F6D00E0605B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB846622A4E5F6D00E0605B /* User.swift */; };
+		0FB846652A4EF9A700E0605B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB846642A4EF9A700E0605B /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		0F772E102A4C4B4D002E5815 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0F772E122A4C4B56002E5815 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		0FB846622A4E5F6D00E0605B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0FB846642A4EF9A700E0605B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				0F772E092A4C49A9002E5815 /* Root */,
 				0F772E082A4C4989002E5815 /* Components */,
 				0F29ACC52A4B03F5003C4493 /* Assets.xcassets */,
+				0FB846662A4EF9AD00E0605B /* MainAppViews */,
 				0F29ACC72A4B03F5003C4493 /* Preview Content */,
 			);
 			path = LocaViva;
@@ -181,6 +184,14 @@
 				0FB846622A4E5F6D00E0605B /* User.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		0FB846662A4EF9AD00E0605B /* MainAppViews */ = {
+			isa = PBXGroup;
+			children = (
+				0FB846642A4EF9A700E0605B /* ProfileView.swift */,
+			);
+			path = MainAppViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +299,7 @@
 			files = (
 				0F772E062A4C3908002E5815 /* ParseDoc.swift in Sources */,
 				0F772E112A4C4B4D002E5815 /* LoginView.swift in Sources */,
+				0FB846652A4EF9A700E0605B /* ProfileView.swift in Sources */,
 				0F29ACC42A4B03F3003C4493 /* ContentView.swift in Sources */,
 				0F29ACC22A4B03F3003C4493 /* LocaVivaApp.swift in Sources */,
 				0F772E042A4C382F002E5815 /* FirebaseAPI.swift in Sources */,

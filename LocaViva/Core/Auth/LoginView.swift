@@ -10,7 +10,8 @@ import SwiftUI
 struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
-    
+    @State private var isLoginned = false
+    @EnvironmentObject var viewModel: AuthViewMode
     
     var body: some View {
         NavigationView {
@@ -62,8 +63,17 @@ struct LoginView: View {
                 .padding(.horizontal)
                 .padding(.top)
                 
-                LoginButton()
-                    .padding(.top)
+                Button{
+                    LoginButton().loginUser(email: email, password: password)
+                } label: {
+                    Text("Вход")
+                        .font(.headline)
+                        .foregroundStyle(.black)
+                        .frame(width: 260, height: 65)
+                        .background(Color(red: 1, green: 0.81, blue: 0.33))
+                        .cornerRadius(45)
+                }
+                .padding(.top)
                 
                 NavigationLink(destination: AnyView(LogRegScreenView())) {
                     Text("Назад")

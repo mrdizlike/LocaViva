@@ -15,6 +15,11 @@ struct ProfileView: View {
             List {
                 Section {
                     Text(user.firstName)
+                    Button {
+                        viewModel.signOut()
+                    } label: {
+                        Text("signOut")
+                    }
                 }
             }
         }
