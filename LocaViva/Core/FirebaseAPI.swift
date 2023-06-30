@@ -8,16 +8,19 @@
 import Foundation
 import SwiftUI
 import Firebase
+import FirebaseAuth
+import FirebaseFirestoreSwift
 import FirebaseStorage
 import FirebaseDatabase
 
 class FirebaseAPI {
-    
     static let shared = FirebaseAPI()
     
     private func configure() -> Firestore {
         var db: Firestore!
         let settings = FirestoreSettings()
+        let providerFactory = AppCheckDebugProviderFactory()
+        AppCheck.setAppCheckProviderFactory(providerFactory)
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
         return db
@@ -45,5 +48,40 @@ class FirebaseAPI {
             image = UIImage(data: data!)!
             completion(image)
         })
+    }
+}
+
+class AuthViewMode: ObservableObject {
+    @Published var userSession: User?
+    @Published var currentUser: User?
+    
+    init() {
+        
+    }
+    
+    func signIn(withEmail email: String, withPhone: String, password: String) async throws {
+        
+    }
+    
+    func createUser(withEmail email: String, withPhone: String, password: String, firstName: String, lastName: String, country: String) async throws {
+        
+        do {
+            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            self.userSession = result.user
+            let user = UserData(id: result.user.uid, email: result.user.email!, phoneNumber: withPhone, firstName: firstName, lastName: lastName, country: country) //Понять как работать с кастомными данными (UPD: понял)
+            let encodedUser = try Firestore.Encoder().encode(user)
+            try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
+        } catch {
+            print("something failed \(error.localizedDescription)")
+        }
+        
+    }
+    
+    func signOut() {
+        
+    }
+    
+    func fetchUser() async {
+        
     }
 }

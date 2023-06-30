@@ -29,6 +29,7 @@ struct LoginButton: View {
         NavigationLink(destination: sceneView) {
             Text("Вход")
                 .font(.headline)
+                .foregroundStyle(.black)
                 .frame(width: 260, height: 65)
                 .background(Color(red: 1, green: 0.81, blue: 0.33))
                 .cornerRadius(45)
@@ -38,6 +39,7 @@ struct LoginButton: View {
 
 struct RegisterButton: View {
     @State var sceneView: AnyView?
+    @ObservedObject var viewModel = AuthViewMode()
     
     var body: some View {
         NavigationLink(destination: sceneView) {
@@ -47,6 +49,12 @@ struct RegisterButton: View {
                 .frame(width: 260, height: 65)
                 .background(Color.blue)
                 .cornerRadius(45)
+        }
+    }
+    
+    func createUser(email: String, phone: String, password: String, firstName: String, lastName: String, country: String) {
+        Task {
+            try await viewModel.createUser(withEmail: email, withPhone: phone, password: password, firstName: firstName, lastName: lastName, country: country)
         }
     }
 }

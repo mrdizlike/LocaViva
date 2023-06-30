@@ -177,8 +177,8 @@ struct LogRegScreenView: View {
                     .multilineTextAlignment(.center)
                     .padding()
                 
-                LoginButton()
-                RegisterButton()
+                LoginButton(sceneView: AnyView(LoginView()))
+                RegisterButton(sceneView: AnyView(RegisterView(email: "", phoneNumber: "", password: "")))
                 
             })
         }

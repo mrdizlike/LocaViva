@@ -40,6 +40,11 @@
 		0F772E022A4C368A002E5815 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 0F772E012A4C368A002E5815 /* FirebaseStorageCombine-Community */; };
 		0F772E042A4C382F002E5815 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F772E032A4C382F002E5815 /* FirebaseAPI.swift */; };
 		0F772E062A4C3908002E5815 /* ParseDoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F772E052A4C3908002E5815 /* ParseDoc.swift */; };
+		0F772E0E2A4C4B0A002E5815 /* InputFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F772E0D2A4C4B0A002E5815 /* InputFields.swift */; };
+		0F772E112A4C4B4D002E5815 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F772E102A4C4B4D002E5815 /* LoginView.swift */; };
+		0F772E132A4C4B56002E5815 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F772E122A4C4B56002E5815 /* RegisterView.swift */; };
+		0FB846612A4CE87F00E0605B /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0FB846602A4CE87F00E0605B /* PhoneNumberKit */; };
+		0FB846632A4E5F6D00E0605B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB846622A4E5F6D00E0605B /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +57,10 @@
 		0F772DCE2A4C34ED002E5815 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0F772E032A4C382F002E5815 /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
 		0F772E052A4C3908002E5815 /* ParseDoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseDoc.swift; sourceTree = "<group>"; };
+		0F772E0D2A4C4B0A002E5815 /* InputFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFields.swift; sourceTree = "<group>"; };
+		0F772E102A4C4B4D002E5815 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		0F772E122A4C4B56002E5815 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		0FB846622A4E5F6D00E0605B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +77,7 @@
 				0F772DDA2A4C368A002E5815 /* FirebaseAuth in Frameworks */,
 				0F772DE22A4C368A002E5815 /* FirebaseDatabaseSwift in Frameworks */,
 				0F772DDE2A4C368A002E5815 /* FirebaseCrashlytics in Frameworks */,
+				0FB846612A4CE87F00E0605B /* PhoneNumberKit in Frameworks */,
 				0F772DD62A4C368A002E5815 /* FirebaseAppCheck in Frameworks */,
 				0F772DD22A4C368A002E5815 /* FirebaseAnalytics in Frameworks */,
 				0F772DEE2A4C368A002E5815 /* FirebaseFunctionsCombine-Community in Frameworks */,
@@ -140,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				0F772DCC2A4B881D002E5815 /* Buttons.swift */,
+				0F772E0D2A4C4B0A002E5815 /* InputFields.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -155,10 +166,21 @@
 		0F772E0A2A4C49C6002E5815 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0F772E0F2A4C4B36002E5815 /* Auth */,
 				0F772E032A4C382F002E5815 /* FirebaseAPI.swift */,
 				0F772E052A4C3908002E5815 /* ParseDoc.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		0F772E0F2A4C4B36002E5815 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				0F772E102A4C4B4D002E5815 /* LoginView.swift */,
+				0F772E122A4C4B56002E5815 /* RegisterView.swift */,
+				0FB846622A4E5F6D00E0605B /* User.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +225,7 @@
 				0F772DFD2A4C368A002E5815 /* FirebaseRemoteConfigSwift */,
 				0F772DFF2A4C368A002E5815 /* FirebaseStorage */,
 				0F772E012A4C368A002E5815 /* FirebaseStorageCombine-Community */,
+				0FB846602A4CE87F00E0605B /* PhoneNumberKit */,
 			);
 			productName = LocaViva;
 			productReference = 0F29ACBE2A4B03F3003C4493 /* LocaViva.app */;
@@ -234,6 +257,7 @@
 			mainGroup = 0F29ACB52A4B03F3003C4493;
 			packageReferences = (
 				0F772DD02A4C368A002E5815 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				0FB8465F2A4CE87F00E0605B /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
 			);
 			productRefGroup = 0F29ACBF2A4B03F3003C4493 /* Products */;
 			projectDirPath = "";
@@ -263,9 +287,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F772E062A4C3908002E5815 /* ParseDoc.swift in Sources */,
+				0F772E112A4C4B4D002E5815 /* LoginView.swift in Sources */,
 				0F29ACC42A4B03F3003C4493 /* ContentView.swift in Sources */,
 				0F29ACC22A4B03F3003C4493 /* LocaVivaApp.swift in Sources */,
 				0F772E042A4C382F002E5815 /* FirebaseAPI.swift in Sources */,
+				0FB846632A4E5F6D00E0605B /* User.swift in Sources */,
+				0F772E132A4C4B56002E5815 /* RegisterView.swift in Sources */,
+				0F772E0E2A4C4B0A002E5815 /* InputFields.swift in Sources */,
 				0F772DCD2A4B881D002E5815 /* Buttons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,6 +510,14 @@
 				minimumVersion = 10.11.0;
 			};
 		};
+		0FB8465F2A4CE87F00E0605B /* XCRemoteSwiftPackageReference "PhoneNumberKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/PhoneNumberKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.6.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -609,6 +645,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0F772DD02A4C368A002E5815 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		0FB846602A4CE87F00E0605B /* PhoneNumberKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FB8465F2A4CE87F00E0605B /* XCRemoteSwiftPackageReference "PhoneNumberKit" */;
+			productName = PhoneNumberKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
