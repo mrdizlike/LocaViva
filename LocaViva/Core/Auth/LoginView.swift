@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct LoginView: View {
+    @Environment(\.presentationMode) var presentationMode
     @State private var email = ""
     @State private var password = ""
     @State private var isLoginned = false
-    @EnvironmentObject var viewModel: AuthViewMode
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Color(red: 0.24, green: 0.64, blue: 0.36)
                 .ignoresSafeArea()
                 .overlay(
@@ -62,9 +62,10 @@ struct LoginView: View {
                 }
                 .padding(.horizontal)
                 .padding(.top)
-                
+
                 Button{
                     LoginButton().loginUser(email: email, password: password)
+                    isLoginned = true
                 } label: {
                     Text("Вход")
                         .font(.headline)
@@ -73,9 +74,15 @@ struct LoginView: View {
                         .background(Color(red: 1, green: 0.81, blue: 0.33))
                         .cornerRadius(45)
                 }
+                .navigationDestination(isPresented: $isLoginned) {
+                    ProfileView()
+                }
+                .navigationBarBackButtonHidden(true)
                 .padding(.top)
                 
-                NavigationLink(destination: AnyView(LogRegScreenView())) {
+                Button{
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
                     Text("Назад")
                         .font(.system(size: 20))
                         .foregroundStyle(.white)
@@ -86,8 +93,4 @@ struct LoginView: View {
         }
         .navigationBarBackButtonHidden(true)
     }
-}
-
-#Preview {
-    LoginView()
 }

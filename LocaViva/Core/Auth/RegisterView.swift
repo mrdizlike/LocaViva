@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RegisterView: View {
+    @Environment(\.presentationMode) var presentationMode
     @State var email: String
     @State var phoneNumber: String
     @State var password: String
@@ -72,7 +73,9 @@ struct RegisterView: View {
                 RegisterButton(sceneView: AnyView(RegisterSecondView(email: $email, phoneNumber: $phoneNumber, password: $password)))
                     .padding(.top)
                 
-                NavigationLink(destination: AnyView(LogRegScreenView())) {
+                Button{
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
                     Text("Назад")
                         .font(.system(size: 20))
                         .foregroundStyle(.white)

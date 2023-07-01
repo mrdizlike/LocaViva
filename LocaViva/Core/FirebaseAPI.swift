@@ -51,7 +51,7 @@ class FirebaseAPI {
     }
 }
 
-@MainActor //Часть ассинхроночки, означает, что этот блок кода должен выполнять в основной очереди
+@MainActor //Часть ассинхроночки, означает, что этот блок кода должен выполняться в основной очереди
 class AuthViewMode: ObservableObject {
     @Published var userSession: User? //Проверяем в аккаунте пользователь или нет. публишд используем чтобы следить за изменениями
     @Published var currentUser: UserData?

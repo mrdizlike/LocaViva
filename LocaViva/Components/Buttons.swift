@@ -40,7 +40,6 @@ struct LoginButton: View {
     func loginUser(email: String, password: String) {
         Task {
             try await viewModel.signIn(withEmail: email, password: password)
-            
         }
     }
 }
@@ -66,3 +65,4 @@ struct RegisterButton: View {
         }
     }
 }
+
